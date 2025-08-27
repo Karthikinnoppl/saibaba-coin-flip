@@ -6,8 +6,9 @@ let soundEnabled = false;
 
 const soundToggle = document.getElementById("soundToggle");
 soundToggle.addEventListener("change", () => {
-  soundEnabled = soundToggle.checked;
+  soundEnabled = !soundToggle.checked;
 });
+soundEnabled = !soundToggle.checked; // Initialize state based on default checkbox
 
 // Yes and No image URLs (you can customize with real coin face images later)
 const results = [
