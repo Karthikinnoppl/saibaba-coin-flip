@@ -2,6 +2,12 @@ const coinImage = document.getElementById("coinImage");
 const resultText = document.getElementById("resultText");
 const flipButton = document.getElementById("flipButton");
 const bellSound = new Audio("sounds/bell.mp3");
+let soundEnabled = false;
+
+const soundToggle = document.getElementById("soundToggle");
+soundToggle.addEventListener("change", () => {
+  soundEnabled = soundToggle.checked;
+});
 
 // Yes and No image URLs (you can customize with real coin face images later)
 const results = [
@@ -16,8 +22,10 @@ const results = [
 ];
 
 flipButton.addEventListener("click", () => {
-  bellSound.currentTime = 0; // rewind sound
-  bellSound.play();
+  if (soundEnabled) {
+    bellSound.currentTime = 0;
+    bellSound.play();
+  }
   // Optional: Animate
   coinImage.style.transform = "rotateY(360deg)";
   setTimeout(() => {
